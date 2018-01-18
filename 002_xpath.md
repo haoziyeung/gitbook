@@ -1,4 +1,4 @@
-\#\# 1. 节点关系
+## 1. 节点关系
 
 1.1. 父\(Parent\)
 
@@ -10,113 +10,82 @@
 
 1.5. 后代\(Descendant\)
 
-\#\# 2. 选取节点
+## 2. 选取节点
 
-\|表达式 \|    说明\|
+| **表达式** | **说明** |
+| :--- | :--- |
+|  |  |
 
-\|----\|----\|
+## 3.  技巧
 
-\|nodename\|     选取此节点的所有子节点。
-
-\|/ \|     从根节点选取。
-
-\|// \|     从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
-
-\|. \|    选取当前节点。
-
-\|.. \|    选取当前节点的父节点。
-
-\|@ \|    选取属性。\|
-
-\#\# 3.  技巧
-
-\#\#\# 3.1. XPATH如何选择不包含某一个属性的节点?
+### 3.1. XPATH如何选择不包含某一个属性的节点?
 
 选择包含某一特定属性的节点，可以使用例如//tbody/tr\[@class\]来选择。那么不含某属性的节点如何用xpath取得呢？
 
 例如排除一个属性的节点可以使用//tbody/tr\[not\(@class\)\]来写，排除一个或者两个属性可以使用//tbody/tr\[not\(@class or @id\)\]来选择。
 
-\#\# 4. 例
+## 4. 例
 
-    ## 1. 节点关系
-    1.1. 父(Parent)
-    1.2. 子(Children)
-    1.3. 同胞(Sibling)
-    1.4. 先辈(Ancestor)
-    1.5. 后代(Descendant)
+### 4.1 eg1
 
-    ## 2. 选取节点
-    |表达式 |	说明|
-    |----|----|
-    |nodename| 	选取此节点的所有子节点。
-    |/ | 	从根节点选取。
-    |// | 	从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
-    |. |	选取当前节点。
-    |.. |	选取当前节点的父节点。
-    |@ |	选取属性。|
+```
+from lxml import etree
 
-    ## 3.  技巧
-    ### 3.1. XPATH如何选择不包含某一个属性的节点?
-    选择包含某一特定属性的节点，可以使用例如//tbody/tr[@class]来选择。那么不含某属性的节点如何用xpath取得呢？
-    例如排除一个属性的节点可以使用//tbody/tr[not(@class)]来写，排除一个或者两个属性可以使用//tbody/tr[not(@class or @id)]来选择。
+html = \
+"""
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html"><span class="bold">third item</span></a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+</div>
+"""
 
-    ## 4. 例
-    ```
-    from lxml import etree
+#利用 parse 方法来读取文件
+f = open("hello.html", "r")
+html = f.read()
+root = etree.HTML(html)
+#报错可以尝试 etree.HTML(html.decode('utf-8'))
 
-    html = """
-    <div>
-        <ul>
-             <li class="item-0"><a href="link1.html">first item</a></li>
-             <li class="item-1"><a href="link2.html">second item</a></li>
-             <li class="item-inactive"><a href="link3.html"><span class="bold">third item</span></a></li>
-             <li class="item-1"><a href="link4.html">fourth item</a></li>
-             <li class="item-0"><a href="link5.html">fifth item</a>
-         </ul>
-    </div>
-    """
+#网页获取
+request.get(url).text
 
-    #利用 parse 方法来读取文件
-    f = open("hello.html", "r")
-    html = f.read()
-    root = etree.HTML(html)
-    #报错可以尝试 etree.HTML(html.decode('utf-8'))
+#初始化
+root = etree.HTML(html)
+contents = etree.tostring(root, pretty_print=True) #
 
-    #网页获取
-    request.get(url).text
+#获取所有的 <li> 标签
+tmp = root.xpath("//li")
 
-    #初始化
-    root = etree.HTML(html)
-    contents = etree.tostring(root, pretty_print=True) #
+#获取 <li> 标签的所有 class
+tmp = root.xpath("//li/@class")
 
-    #获取所有的 <li> 标签
-    tmp = root.xpath("//li")
+#获取 <li> 标签下 href 为 link1.html 的 <a> 标签
+tmp = root.xpath('//li/a[@href="link1.html"]')
 
-    #获取 <li> 标签的所有 class
-    tmp = root.xpath("//li/@class")
+#获取 <li> 标签下的所有 <span> 标签,
+#因为 / 是用来获取子元素的，而 <span> 并不是 <li> 的子元素，所以，要用双斜杠
+tmp = root.xpath("//li//span")
 
-    #获取 <li> 标签下 href 为 link1.html 的 <a> 标签
-    tmp = root.xpath('//li/a[@href="link1.html"]')
+#获取 <li> 标签下的所有 class，不包括 <li>
+tmp = root.xpath('//li/a//@class')
 
-    #获取 <li> 标签下的所有 <span> 标签,
-    #因为 / 是用来获取子元素的，而 <span> 并不是 <li> 的子元素，所以，要用双斜杠
-    tmp = root.xpath("//li//span")
+#获取最后一个 <li> 的 <a> 的 href
+tmp = root.xpath('//li[last()]/a/@href')
 
-    #获取 <li> 标签下的所有 class，不包括 <li>
-    tmp = root.xpath('//li/a//@class')
+#获取倒数第二个元素的内容
+tmp = root.xpath('//li[last()-1]/a')
 
-    #获取最后一个 <li> 的 <a> 的 href
-    tmp = root.xpath('//li[last()]/a/@href')
+#获取 class 为 bold 的标签名
+tmp = root.xpath('//*[@class="bold"]')
+print(tmp)
 
-    #获取倒数第二个元素的内容
-    tmp = root.xpath('//li[last()-1]/a')
+```
 
-    #获取 class 为 bold 的标签名
-    tmp = root.xpath('//*[@class="bold"]')
-    print(tmp)
-    ```
 
-    ```
     from lxml import etree
     html='''
     <!DOCTYPE html>
@@ -277,6 +246,7 @@
         # 打印：p p a a a a ...
     ```
     ###
+
 
 
 
