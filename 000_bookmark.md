@@ -2,6 +2,11 @@
 
 [http://blog.sina.com.cn/s/articlelist\_2510103112\_0\_1.html](http://blog.sina.com.cn/s/articlelist_2510103112_0_1.html)
 
+----
+## 生信博客
+http://blog.sina.com.cn/s/articlelist_2510103112_0_12.html
+
+----
 ## 爬虫：
 
 [http://www.cnblogs.com/gopythoner/p/6337703.html](http://www.cnblogs.com/gopythoner/p/6337703.html)

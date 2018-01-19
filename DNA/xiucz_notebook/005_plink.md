@@ -1,3 +1,7 @@
+---
+description: This is a short description of my page
+---
+
 **ped文件格式:**
 
 PED文件主要是储存每个样本的基因型的，每行代表一个样本，前6列分别为：
@@ -28,48 +32,45 @@ MAP文件主要是用来记录每个maker（一般为SNP）的位置信息。
 | :--- | :--- |
 | Chromosome \(1-22, X, Y or 0 if unplaced\) |  |
 | rs\(or Variant identifier\) |  |
-|Genetic distance \(morgans\)|摩尔根距离|
-|Base-pair position \(bp units\)||
+| Genetic distance \(morgans\) | 摩尔根距离 |
+| Base-pair position \(bp units\) |  |
 
 **FAM文件:**
 
 FAM文件没有header，每行一个样本，六列信息，分别是：
 
+\| header\| tails\|
 
-| header| tails|
+\| ---- \| ---- \|
 
-| ---- | ---- |
+\|Family ID \('FID'\)\|\|
 
-|Family ID ('FID')||
+\|Within-family ID \('IID'; cannot be '0'\)
 
-|Within-family ID ('IID'; cannot be '0')
+\|Within-family ID of father \('0' if father isn't in dataset\)\|
 
-|Within-family ID of father ('0' if father isn't in dataset)|
+\|Within-family ID of mother \('0' if mother isn't in dataset\)\|
 
-|Within-family ID of mother ('0' if mother isn't in dataset)|
+\|Sex code \('1' = male, '2' = female, '0' = unknown\)\|
 
-|Sex code ('1' = male, '2' = female, '0' = unknown)|
+\|Phenotype value \('1' = control, '2' = case, '-9'/'0'/non-numeric = missing data if case/control\)\|\|
 
-|Phenotype value ('1' = control, '2' = case, '-9'/'0'/non-numeric = missing data if case/control)||
+---
 
 ## 3. 基于全基因组snp数据如何进行主成分分析（PCA）
 
 ### 3.1. 利用vcftools软件进行格式转换：
 
 ```
-
 vcftools --vcf tmp.vcf --plink --out tmp
 
 ##--remove-filtered-all
-
 ```
 
 ```
-
 [options]
 
 --remove-filtered-all: Removes all sites with a FILTER flag other than PASS.
-
 ```
 
 生成两个文件：tmp.ped 和 tmp.map
@@ -85,9 +86,15 @@ vcftools --vcf tmp.vcf --plink --out tmp
 
 ### 3.3. 利用gcta软件进行pca构建
 
-
-#### Ref_Info
+#### Ref\_Info
 
 [http://www.bioask.net/question/238](http://www.bioask.net/question/238)
 
+---
+
+## 4. PLINK 1.90
+
+官方网站：[http://www.cog-genomics.org/plink2/](http://www.cog-genomics.org/plink2/)
+
+参考网站：[http://zzz.bwh.harvard.edu/plink/](http://zzz.bwh.harvard.edu/plink/)
 
