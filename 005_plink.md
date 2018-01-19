@@ -2,39 +2,27 @@
 
 PED文件主要是储存每个样本的基因型的，每行代表一个样本，前6列分别为：
 
-\|headers\|tails\|  
-FamilyID
+
 
 | headers | tails |
 | :--- | :--- |
-| FamilyID |  |
+| FamilyID | 如果是自然群体，那就把family ID和individual ID都填一样的就行了。父母的ID就填0，代表缺失。 |
+| IndividualID |  |
+| PaternalID |  |
+| MaternalID |  |
+| Sex\(1=male;2=female;other=unknown\) |  |
+| Phenotype |  |
 
-\|----\|----\|
 
-\|\|  
-如果是自然群体，那就把family ID和individual ID都填一样的就行了。父母的ID就填0，代表缺失。
-
-\|IndividualID\|\|
-
-\|PaternalID\|\|
-
-\|MaternalID\|\|
-
-\|Sex\(1=male;2=female;other=unknown\)\|\|
-
-\|Phenotype\|\|
 
 从第7列开始，Phenotype（基因型，A，C，G，T）。
 
-\`\`\`
-
+```
 FAM001  1  0 0  1  2  A A  G G  A C
-
 FAM001  2  0 0  1  2  A A  A G  0 0
+```
 
-\`\`\`
-
-\*\*MAP文件：\*\*
+**MAP文件:**
 
 MAP文件主要是用来记录每个maker（一般为SNP）的位置信息。
 
