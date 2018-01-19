@@ -2,7 +2,7 @@
 
 [http://blog.sina.com.cn/s/articlelist\_2510103112\_0\_1.html](http://blog.sina.com.cn/s/articlelist_2510103112_0_1.html)
 
-##  爬虫：
+## 爬虫：
 
 [http://www.cnblogs.com/gopythoner/p/6337703.html](http://www.cnblogs.com/gopythoner/p/6337703.html)
 
@@ -15,6 +15,18 @@
 [https://github.com/hall-lab/speedseq](https://github.com/hall-lab/speedseq)
 
 [https://github.com/hall-lab](https://github.com/hall-lab)
+
+[https://github.com/fw1121/snp-pipeline](https://github.com/fw1121/snp-pipeline)
+
+[https://github.com/fw1121/alignment-and-variant-calling-tutorial](https://github.com/fw1121/alignment-and-variant-calling-tutorial)
+
+[https://github.com/fw1121/GenVisR](https://github.com/fw1121/GenVisR)
+
+[https://github.com/fw1121/GATK-Whole-Genome-Pipeline](https://github.com/fw1121/GATK-Whole-Genome-Pipeline)
+
+[https://github.com/molgenis/molgenis-pipelines](https://github.com/molgenis/molgenis-pipelines)
+
+[https://github.com/tseemann/snippy](https://github.com/tseemann/snippy)
 
 ## 2. RNAseq
 
