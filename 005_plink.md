@@ -89,3 +89,5 @@ vcftools --vcf tmp.vcf --plink --out tmp
 #### Ref_Info
 
 [http://www.bioask.net/question/238](http://www.bioask.net/question/238)
+
+
