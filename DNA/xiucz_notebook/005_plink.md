@@ -92,9 +92,25 @@ vcftools --vcf tmp.vcf --plink --out tmp
 
 ---
 
-## 4. PLINK 1.90
+## 4. PLINK1.07
 
 官方网站：[http://www.cog-genomics.org/plink2/](http://www.cog-genomics.org/plink2/)
 
 参考网站：[http://zzz.bwh.harvard.edu/plink/](http://zzz.bwh.harvard.edu/plink/)
 
+tutorial：[http://zzz.bwh.harvard.edu/plink/tutorial.shtml](http://zzz.bwh.harvard.edu/plink/tutorial.shtml)
+
+### 89 HapMap samples and 80K random SNPs
+
+```
+unzip  hapmap1.zip
+
+hapmap1.map
+hapmap1.ped
+pop.phe
+qt.ph
+```
+
+
+
+## 5. PLINK1.90
