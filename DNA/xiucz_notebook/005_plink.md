@@ -147,8 +147,7 @@ hapmap.fam
 **NOTES:**
 
 ##### note1:
-
-使用_--make-bed_选项时，缺失率和等位基因频率的阈值过滤器被自动设置为排除任何人。
+使用_--make-bed_选项时，缺失率和等位基因频率的阈值过滤器被自动设置为排除任何人。_--geno 0.1 --maf 0.01 --hwe 0.000001_
 
 #### 4.1.3. 使用二进制ped文件
 
@@ -237,6 +236,7 @@ sort --key=8 -nr as.assoc|head
 
 ```
 
+#### 分层分析（Stratification analysis）
 ----
 
 ## 5. PLINK1.90
