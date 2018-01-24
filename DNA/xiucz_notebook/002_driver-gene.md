@@ -37,6 +37,8 @@ MutSigS2N --&gt; MutSigCV
 #### Ref\_Info
 
 MCR安装: [http://youzicha1231.lofter.com/post/1e273e34\_cfd7bb2](http://youzicha1231.lofter.com/post/1e273e34_cfd7bb2)
+http://www.cnblogs.com/qiniqnyang/p/5561104.html
+http://www.cnblogs.com/qiniqnyang/p/5560913.html
 
 ### 2.1.1. 输入文件
 
@@ -123,4 +125,11 @@ x给出这些相邻基因中的突变碱基的数目，这些基因是沉默的�
 而X给出与这些相邻基因相关的碱基的总数。
 
 ### 2.4. Q&A
-#### 2.4.1 
+#### 2.4.1 制作MAF文件
+利用python模块vcf2maf；
+利用oncotator将mutect2生成的vcf文件转成maf.txt文件再进一步处理；
+```
+python3 get_vcf_to_tsv.py mutect2.vcf > mutect2.tsv
+## 利用官网转化
+python3 get_maf.py mutect2.txt > mutect2.maf
+```
