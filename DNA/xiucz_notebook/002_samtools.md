@@ -203,13 +203,13 @@ samtools view -@ 8 -f 1 -F 12 提取paired mapped reads
 ```
 
 ## Concept
-Linear alignment vs chimeric reads
+ vs chimeric reads
 
-chimeric reads vs soft clipping vs hard clipping
+ vs soft clipping vs 
 
 representative vs supplementary alignment
 
-Multiple mapping
+
 
 **1.** **Chimeric reads** occur when one sequencing read aligns to two distinct portions of the genome with little or no overlap. Chimeric reads are  indicative of structural variation. Chimeric reads are also called **split reads**.
 **1.1.** After aligning with [bwa](http://bio-bwa.sourceforge.net/) mem, chimeric reads will have an SA  tag
@@ -219,7 +219,13 @@ Multiple mapping
 samtools view my_alignment.bam | grep 'SA:' | less
 ```
 
-**2** **soft-clipped reads**
+**2.** **soft-clipped reads**
+**3.** **hard clipping reads**
+**4.** **chimeric reads**
+**5.** **Multiple mapping**
+**6.** **representative**
+**7.** **supplementary alignment**
+**8.** **sinear alignment**
 
 ## Bwa Mem -M Option
 ```
