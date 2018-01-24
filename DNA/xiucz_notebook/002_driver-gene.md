@@ -37,6 +37,8 @@ MutSigS2N --&gt; MutSigCV
 #### Ref\_Info
 
 MCR安装: [http://youzicha1231.lofter.com/post/1e273e34\_cfd7bb2](http://youzicha1231.lofter.com/post/1e273e34_cfd7bb2)
+http://www.cnblogs.com/qiniqnyang/p/5561104.html
+http://www.cnblogs.com/qiniqnyang/p/5560913.html
 
 ### 2.1.1. 输入文件
 
