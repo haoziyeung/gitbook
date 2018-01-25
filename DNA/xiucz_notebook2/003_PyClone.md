@@ -48,6 +48,7 @@ tsv/
 ```
 将tsv文件转换成PyClone可以使用的yaml格式
 ```
+mkdir yaml/
 PyClone build_mutations_file \
 --in_file tsv/SRR385938.tsv 
 --out_file yaml/SRR385938.yaml
@@ -63,4 +64,54 @@ PyClone build_mutations_file \
 PyClone build_mutations_file \
 --in_file tsv/SRR385941.tsv \
 --out_file yaml/SRR385941.yaml
+```
+
+```
+head tsv/SRR385938.tsv
+mutation_id	ref_counts	var_counts	normal_cn	minor_cn	major_cn	variant_case  variant_freq	genotype
+NA12156:BB:chr2:175263063	3812	14	2	0	2	NA12156	0.0036591740721380033	BB
+
+head yaml/SRR385938.yaml 
+
+mutations:
+- id: NA12156:BB:chr2:175263063
+  ref_counts: 3812
+  states:
+  - {g_n: AA, g_r: AA, g_v: AB, prior_weight: 1}
+  - {g_n: AA, g_r: AA, g_v: BB, prior_weight: 1}
+  var_counts: 14
+```
+**NOTES:**
+##### note1:
+ref_counts: 3812:   指定突变的参考数量
+var_counts: 14:     指定突变的变异计数。
+
+##### note2:
+**g_n:**正常亚群中细胞的基因型;
+
+**g_r:** 参考子群体中细胞的基因型;
+回顾参考亚群由缺乏突变的所有癌细胞组成。因此，这里有效的基因型不应含有B等位基因。例如A，AA，AAA，AAAAAAAA都是有效的，但是B，AB，BB，AAAAB是无效的。
+
+**g_v:**变体亚群中细胞的基因型;
+回顾变体亚群由具有突变的所有癌细胞组成。因此，有效的基因型应该包含至少一个 B等位基因。例如B，AB，BB，ABBB都是有效的，但是A，AA，AAB是无效的。
+
+**prior:**
+
+## 2.2.1 yaml格式的配置文件
+参考tutotial data中的config.yaml
+```
+cat config.yaml
+
+num_iters: 10000
+
+base_measure_params:
+  alpha: 1
+  beta: 1
+
+concentration:
+  value: 1.0
+  
+  prior:
+    shape: 1.0
+    rate: 0.001
 ```
