@@ -156,6 +156,7 @@ SRR385938.cellular_prevalence.tsv.bz2  SRR385941.cellular_prevalence.tsv.bz2
 SRR385939.cellular_prevalence.tsv.bz2
 SRR385940.cellular_prevalence.tsv.bz2
 ```
+*.cellular_frequencies.tsv.bz2包含每个突变的采样细胞频率。
 
 ### 2.3.3. 聚类
 (不可用)
