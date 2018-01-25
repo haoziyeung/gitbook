@@ -33,6 +33,8 @@ http://blog.sina.com.cn/s/articlelist_2510103112_0_12.html
 
 [https://github.com/tseemann/snippy](https://github.com/tseemann/snippy)
 
+https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0443-x
+
 ## 2. RNAseq
 
 [https://github.com/chapmanb/bcbio-nextgen](https://github.com/chapmanb/bcbio-nextgen)
