@@ -2,14 +2,17 @@ Abstract
 We introduce a novel statistical method, PyClone, for inference of clonal population structures in cancers. PyClone is a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy number changes and normal cell contamination. Single cell sequencing validation demonstrates that PyClone infers accurate clustering of mutations that co-occur in individual cells.  
 摘要：我们引入了一种新的统计方法，PyClone，用于推断癌症中的克隆群体结构。PyClone是一种贝叶斯聚类方法，用于将一系列深度测序的体细胞突变分组为假定的克隆聚类，同时估计其细胞发生率并考虑由节段拷贝数变化和正常细胞污染引入的等位基因不平衡。单细胞测序验证表明，PyClone推断出在单细胞中共同发生的突变的准确聚类。
 
-## 2.1. 下载&安装
+## 1. 下载&安装 [v0.12.3]
 https://bitbucket.org/aroth85/pyclone/wiki/Installation
 
 ```
-conda create --name pyclone python=2
+conda create --name pyclone python=2 #conda3
+source activate pyclone
+conda install pyclone -c aroth85
+source deactivate
 ```
-
-## 2.2. Input data
+## 2. Data
+## 2.1. Input data
 
 | header | tails |
 | :---: | :--- |
@@ -36,3 +39,28 @@ conda create --name pyclone python=2
 + variant_freq：显示变体等位基因的读数部分。
 + genotype：具有变体的病例的基因型。
 
+## 2.2. example data
+```
+tar -zxvf tutorial.tar.gz && cd tutorial && ls
+
+config.yaml
+tsv/
+```
+将tsv文件转换成PyClone可以使用的yaml格式
+```
+PyClone build_mutations_file \
+--in_file tsv/SRR385938.tsv 
+--out_file yaml/SRR385938.yaml
+
+PyClone build_mutations_file \
+--in_file tsv/SRR385939.tsv \
+--out_file yaml/SRR385939.yaml
+
+PyClone build_mutations_file \
+--in_file tsv/SRR385940.tsv \
+--out_file yaml/SRR385940.yaml
+
+PyClone build_mutations_file \
+--in_file tsv/SRR385941.tsv \
+--out_file yaml/SRR385941.yaml
+```
