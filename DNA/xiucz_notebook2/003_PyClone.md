@@ -158,8 +158,11 @@ SRR385940.cellular_prevalence.tsv.bz2
 ```
 
 ### 2.3.3. 聚类
+(不可用)
 ### 2.3.4. 绘制相似矩阵
+(不可用)
 ### 2.3.5. 绘制多样本平行坐标
+(不可用)
 ### 
 ```
 PyClone plot_clusters --config_file final_config.yaml --burnin 1000 --plot_file cluster_plots --plot_type scatter
