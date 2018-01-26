@@ -17,7 +17,7 @@ cat config_sample.txt
 ###For more options see: http://boevalab.com/FREEC/tutorial.html#CONFIG ###
 
 [general]
-chrLenFile = hg19.len
+chrLenFile = ~/FREEC-11.0/hg19.len
 window = 0
 ploidy = 2
 outputDir = ./sample/
@@ -60,6 +60,7 @@ minimalCoveragePerPosition = 5
 
 captureRegions = trim_S07604514_Regions.bed
 ```
+### 2.1. Create Config file
 ## 3. run
 ```
 ~/FREEC-11.0/src//freec -conf config_sample.txt
