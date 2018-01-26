@@ -61,7 +61,9 @@ minimalCoveragePerPosition = 5
 captureRegions = trim_S07604514_Regions.bed
 ```
 ### 2.1. Create Config file
+
 ## 3. run
+### 3.1. 
 ```
 ~/FREEC-11.0/src//freec -conf config_sample.txt
 ```
@@ -81,11 +83,23 @@ sample_normal.recalibrated.bam_minipileup.pileup
 ```
 **NOTES:**
 ##### note1:
-sample_tumor.recalibrated.bam_BAF.txt文件中：
-fitted frequency of A-allele
-fitted frequency of B-allele
-inferred frequency of A-allele
-inferred frequency of B-allele 
+For the Drosophila genome set:
+
+        minExpectedGC = 0.3 and maxExpectedGC = 0.45.
+
+Also it seems to be necessary to remove all the "Het" chromosomes from the analysis by removing them from the chromosome lengths file (thanks to Joel McManus).
+### 3.2. 显著性计算
+```
+cat ~/FREEC-11.0/scripts/assess_significance.R | R --slave --args sample_tumor.recalibrated.bam_CNVs sample_tumor.recalibrated.bam_ratio.txt
+```
+
+
+### 3.3. 绘图
+在处理外显子数据时候，如果没有设置 printNA=FALSE，删掉*_ratio.txt中不在靶区域的数据。
+```
+awk '$3!=-1 {print}' sample_tumor.recalibrated.bam_ratio.txt
+ > sample_tumor.recalibrated.bam_ratio_noNA.txt
+```
 
 ```
 cat ~/FREEC-11.0/scripts/makeGraph.R | R --slave --args 2 sample_tumor.recalibrated.bam_ratio.txt sample_tumor.recalibrated.bam_BAF.txt
@@ -94,3 +108,4 @@ cat ~/FREEC-11.0/scripts/makeGraph.R | R --slave --args 2 sample_tumor.recalibra
 ```
 cat /data3/dna/dnapipe/script/freec/makeGraph.combine.R | R --slave --args 2 sample_tumor.recalibrated.bam_ratio.txt sample_tumor.recalibrated.bam_BAF.txt
 ```
+
