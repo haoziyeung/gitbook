@@ -79,6 +79,13 @@ sample_tumor.recalibrated.bam_sample.cpn
 sample_normal.recalibrated.bam_control.cpn
 sample_normal.recalibrated.bam_minipileup.pileup
 ```
+**NOTES:**
+##### note1:
+sample_tumor.recalibrated.bam_BAF.txt文件中：
+fitted frequency of A-allele
+fitted frequency of B-allele
+inferred frequency of A-allele
+inferred frequency of B-allele 
 
 ```
 cat ~/FREEC-11.0/scripts/makeGraph.R | R --slave --args 2 sample_tumor.recalibrated.bam_ratio.txt sample_tumor.recalibrated.bam_BAF.txt
