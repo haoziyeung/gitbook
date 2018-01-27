@@ -1,0 +1,1 @@
+bcftools stats file.vcf > file.stats
