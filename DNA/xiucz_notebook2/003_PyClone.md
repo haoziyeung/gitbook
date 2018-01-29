@@ -194,4 +194,24 @@ yaml
 ```
 **NOTES:**
 ##### note1:
+tsv文件构成：
+```
+$java -Xmx4g -jar $MuTect \
+    --analysis_type MuTect \
+    -L $bed \
+    --force_output \
+    --input_file:normal $normal \
+    --input_file:tumor $tumor \
+    --reference_sequence $ref \
+    --cosmic $cosmic \
+    --dbsnp $dbsnp \
+    --out $out
+```
+```
+vaf = read.table("loci.vaf",header=T,sep="\t")
+p <- ggplot(vaf,aes(sample_id,variant_allele_frequency,colour=cluster_id)) + geom_line(aes(group=mutation_id)) 
++ geom_point(size=2) + scale_y_continuous(breaks=seq(0,1,by=0.2)) + 
+scale_colour_manual(values=c("hotpink","tan4","green","midnightblue","purple","gold"))
+xlab("Sample") + ylab("VAF(Variant allele frequency)") + theme(axis.text.x = element_text(size=10,face="bold"))
+```
 
