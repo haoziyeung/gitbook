@@ -195,6 +195,7 @@ yaml
 **NOTES:**
 ##### note1:
 tsv文件构成：
+利用mutect1:
 ```
 $java -Xmx4g -jar $MuTect \
     --analysis_type MuTect \
