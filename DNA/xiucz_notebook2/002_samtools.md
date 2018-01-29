@@ -149,6 +149,51 @@ mapping ratio: 1 - 644240*1/5421701*2
 ```
 
 ```
+[0] samtools flagstat plus01791.bam
+
+[1] 33037592 + 0 in total (QC-passed reads + QC-failed reads)
+[2] 0 + 0 secondary
+[3] 0 + 0 supplementary
+[4] 0 + 0 duplicates
+[5] 31144385 + 0 mapped (94.27% : N/A)
+[6] 33037592 + 0 paired in sequencing
+[7] 16518796 + 0 read1
+[8] 16518796 + 0 read2
+[9] 25887744 + 0 properly paired (78.36% : N/A)
+[10] 31089116 + 0 with itself and mate mapped
+[11] 55269 + 0 singletons (0.17% : N/A)
+[12] 0 + 0 with mate mapped to a different chr
+[13] 0 + 0 with mate mapped to a different chr (mapQ>=5)
+```
+```
+[14] 16518796 reads; of these:
+[15]   16518796 (100.00%) were paired; of these:
+[16]     3574924 (21.64%) aligned concordantly 0 times
+[17]     11980802 (72.53%) aligned concordantly exactly 1 time
+[18]     963070 (5.83%) aligned concordantly >1 times
+    ----
+[19]     3574924 pairs aligned concordantly 0 times; of these:
+[20]       1747451 (48.88%) aligned discordantly 1 time
+    ----
+[21]     1827473 pairs aligned 0 times concordantly or discordantly; of these:
+[22]       3654946 mates make up the pairs; of these:
+[23]         1893207 (51.80%) aligned 0 times
+[24]         57506 (1.57%) aligned exactly 1 time
+[25]         1704233 (46.63%) aligned >1 times
+[26] 94.27% overall alignment rate
+```
+```
+[27] 'sample'        'total_reads'   'mapped_reads'  'pair_mapped_reads'     'single_mapped_reads'   'unique_mapped_reads'   'multi_mapped_reads'
+[28] plus01791       33037592        31144385        29382646        1761739 27514012        1704233
+```
+**TIPS:**
+[1]: 'total' is the total number of alignments (lines in the sam file), not total reads.'total' is the total number of alignments (lines in the [sam](http://samtools.sourceforge.net/SAM1.pdf) file), not total reads.
+[9]:"Properly paired" means both mates of a read pair map to the same chromosome, oriented towards each other, and with a sensible insert size. 
+
+#### Ref_Info
+https://www.biostars.org/p/12475/
+
+```
 samtools view -@ 8 -bF 1024 过滤PCR扩增的接头序列
 samtools view -bF 256    计算mappingratio的时候，因为是因为mem算法比对，需要先过滤打断比对的reads
 samtools view -@ 8 -f 1 -F 12 提取paired mapped reads
