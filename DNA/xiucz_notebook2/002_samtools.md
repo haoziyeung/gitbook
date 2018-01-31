@@ -1,9 +1,11 @@
 
 
-### sam文件格式sam格式的定义：https://samtools.github.io/hts-specs/SAMv1.pdf
+### sam文件格式sam格式的定义：
+https://samtools.github.io/hts-specs/SAMv1.pdf
+http://broadinstitute.github.io/picard/explain-flags.html
  1. 第3和第7列，可以用来判断某条reads是否比对成功到了基因组的染色体，左右两条reads是否比对到同一条染色体。
  而第1，10，11列可以提取出来还原成我们的测序数据fastq格式的。  
- 2. 第2列是 http://picard.sourceforge.net/explain-flags.html ，二进制转换成十进制后的和。   
+ 2. 第2列是二进制转换成十进制后的和。   
  3. 第5列，比对结果的质量值，也是因工具而异。  
  4. 第6列CIGAR是比较重要的，解释如下，其中M并不是说match，所以我们的PE 150的reads，大部分都会是150M，但是并不代表着跟参考序列一模一样。其中S/H是比较特殊的，很难讲清楚，但是大部分情况下用不到。
  （soft-clipping碱基是指一条reads未匹配上当前基因组位置的部分，如果有多个reads在这种情况并且这些reads的soft-clipping碱基都能够比对在基因组另一位置，那么就可能存在SV）   
@@ -211,7 +213,6 @@ samtools view my_alignment.bam | grep 'SA:' | less
 
 **2.** **soft-clipped reads**
 **3.** **hard clipping reads**
-**4.** **chimeric reads**
 **5.** **Multiple mapping**
 **6.** **representative**
 **7.** **supplementary alignment**
